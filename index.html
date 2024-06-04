@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Identifier</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+   <div class="outer">
+   <div class="container1">
+    <form>
+        <fieldset>
+            <legend>Car Details</legend>
+            <label>Car Brand:</label>
+            <!-- <input type="text" placeholder="Enter car brand" id="car_brands"> -->
+            <select class="city" id="car_brands">
+                <option></option>
+                <option value="BMW X1">BMW X1</option>
+                <option value="Honda City">Honda City</option>
+                <option value="Maruti Swift">Maruti Swift</option>
+                <option value="Audi Q3 Sportback">Audi Q3 Sportback</option>
+            </select>
+            <br>
+            <br>
+            <label>Car Model:</label>
+            <!-- <input type="text" placeholder="Enter car model" id="car_models"> -->
+            <select id="car_models">
+                <option></option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+            </select>
+            <br><br>
+            <label>Car Type:</label>
+            <!-- <input type="text" placeholder="Enter car type" id="car_types"> -->
+            <select id="car_types">
+                <option></option>
+                <option value="Sedan">Sedan</option>
+                <option value="SUV">SUV</option>
+                <option value="Mini">Mini</option>
+                <option value="Cooper">Cooper</option>
+            </select>
+            <br><br>
+            <label>Fuel Type :</label>
+            <!-- <input type="text" placeholder="Enter car fuel" id="car_fuels"> -->
+            <select class="city" id="car_fuels">
+                <option></option>
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Hybrid">Hybrid</option>
+                <option value="Hydrogen">Hydrogen</option>
+            </select>
+            <br><br>
+            <input type="button" value="Submit" onclick="submitDetails()">
+            <input type="reset" value="Reset" onclick="Reset()">
+        </fieldset>
+    </form>
+
+    <div class="output">
+        <h1>Output:</h1>
+        <p>Car Brand: <span id="out1"></span></p>
+        <p>Car Model: <span id="out2"></span></p>
+        <p>Car Type: <span id="out3"></span></p>
+        <p>Car Fuel: <span id="out4"></span></p>
+    </div>
+   </div>
+
+   <div class="container2" id="container2">
+
+   </div>
+   </div>
+    <script>
+        class CarSpec {
+            constructor(car_brand, car_model, car_type, car_fuel) {
+                this.car_brand = car_brand;
+                this.car_model = car_model;
+                this.car_type = car_type;
+                this.car_fuel = car_fuel;
+            }
+
+            Display() {
+                document.getElementById("out1").innerHTML = this.car_brand;
+                document.getElementById("out2").innerHTML = this.car_model;
+                document.getElementById("out3").innerHTML = this.car_type;
+                document.getElementById("out4").innerHTML = this.car_fuel;
+            }
+        }
+
+        function submitDetails() {
+            let brand = document.getElementById("car_brands").value;
+            let model = document.getElementById("car_models").value;
+            let type = document.getElementById("car_types").value;
+            let fuel = document.getElementById("car_fuels").value;
+
+
+            var obj = new CarSpec(brand, model, type, fuel);
+            obj.Display();
+
+            if(brand=="BMW X1" && type=="SUV")
+            {
+                document.getElementById("container2").style.backgroundImage="url('./img/BMW X1.jpg')";
+            }
+            else if(brand=="Honda City" && type=="Sedan")
+            {
+                document.getElementById("container2").style.backgroundImage="url('./img/Honda City.jpg')";
+            }
+            else if(brand=="Maruti Swift" && type=="Mini")
+            {
+                document.getElementById("container2").style.backgroundImage="url('./img/Maruti Swift.jpg')";
+            }
+            else if(brand=="Audi Q3 Sportback" && type=="SUV")
+            {
+                document.getElementById("container2").style.backgroundImage="url('./img/Audi Q3 Sportback.jpg')";
+            }
+            else{
+                document.getElementById("container2").style.backgroundImage="url('./img/blank.png')";
+
+            }
+            
+        }
+
+        function Reset() {
+            document.getElementById("out1").innerHTML = "";
+            document.getElementById("out2").innerHTML = "";
+            document.getElementById("out3").innerHTML = "";
+            document.getElementById("out4").innerHTML = "";
+            document.getElementById("container2").style.backgroundImage="";
+        }   
+    </script>
+</body>
+
+</html>
